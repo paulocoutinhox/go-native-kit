@@ -1,6 +1,7 @@
 package main
 
 import (
+	"C"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -8,6 +9,11 @@ import (
 )
 
 func main() {
+	PostRequest()
+}
+
+//export PostRequest
+func PostRequest() {
 	resp, err := http.PostForm("https://httpbin.org/post", url.Values{"key": {"Value"}, "id": {"123"}})
 
 	if err != nil {
